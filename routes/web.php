@@ -8,6 +8,8 @@ use App\Http\Controllers\StoreController;
 Route::get('/', [StoreController::class, 'index'])->name('home');
 Route::get('/dang-nhap', [AuthController::class, 'showLogin'])->middleware('guest')->name('login');
 Route::post('/dang-nhap', [AuthController::class, 'login'])->middleware('guest');
+Route::get('/dang-ky', [AuthController::class, 'showRegister'])->middleware('guest')->name('register');
+Route::post('/dang-ky', [AuthController::class, 'register'])->middleware('guest');
 Route::post('/dang-xuat', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
 
 Route::middleware('auth')->group(function () {

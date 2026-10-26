@@ -26,6 +26,10 @@
                     </div>
                     <button class="btn btn-dark w-100" type="submit">Đăng nhập</button>
                 </form>
+                <p class="text-center text-muted small mt-3 mb-0">
+                    Chưa có tài khoản?
+                    <a href="{{ route('register') }}">Đăng ký ngay</a>
+                </p>
             </div>
         </div>
     </div>
