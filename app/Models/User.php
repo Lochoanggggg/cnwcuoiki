@@ -52,6 +52,11 @@ class User extends Authenticatable
         ];
     }
 
+    public function isStoreOwner(): bool
+    {
+        return $this->role === 'admin';
+    }
+
     public function orders(): HasMany
     {
         return $this->hasMany(Order::class);

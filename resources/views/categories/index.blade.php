@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quản lý danh mục</title>
+@extends('layouts.app')
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-          rel="stylesheet">
+@section('title', 'Quản lý danh mục - CNW Clothing')
 
+@push('styles')
     <style>
         body {
             background: #f4f7fb;
@@ -215,17 +210,10 @@
             }
         }
     </style>
-</head>
-<body>
+@endpush
 
-<header class="topbar">
-    <div class="container-fluid px-4 d-flex align-items-center justify-content-between">
-        <div class="brand">▦ Category Manager</div>
-        <span class="text-secondary small">Hệ thống quản lý danh mục</span>
-    </div>
-</header>
-
-<main class="page-container">
+@section('content')
+<div class="page-container">
 
     <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
         <div>
@@ -394,8 +382,5 @@
         Trang quản lý danh mục · Laravel
     </div>
 
-</main>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+</div>
+@endsection

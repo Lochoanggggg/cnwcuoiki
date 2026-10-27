@@ -18,4 +18,6 @@ Route::middleware('auth')->group(function () {
     Route::put('/tai-khoan', [ProfileController::class, 'update'])->name('profile.update');
     
 });
-Route::resource('categories', CategoryController::class);
+Route::resource('categories', CategoryController::class)
+    ->only(['index', 'create', 'store', 'edit', 'update', 'destroy'])
+    ->middleware(['auth', 'can:manage-categories']);

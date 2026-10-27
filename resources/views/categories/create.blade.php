@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Thêm danh mục</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+@extends('layouts.app')
+
+@section('title', 'Thêm danh mục - CNW Clothing')
+
+@push('styles')
     <style>
         body { background: #f4f7fb; font-family: "Segoe UI", Arial, sans-serif; color: #243047; }
         .topbar { background: white; padding: 18px 0; border-bottom: 1px solid #e8edf4; }
@@ -17,15 +15,9 @@
         .btn-primary:hover { background: #1d4ed8; }
         .btn-back { color: #475569; background: #f1f5f9; border-radius: 9px; padding: 11px 18px; text-decoration: none; font-weight: 600; }
     </style>
-</head>
-<body>
-<header class="topbar">
-    <div class="container d-flex justify-content-between align-items-center">
-        <div class="brand">▦ Category Manager</div>
-        <a href="{{ route('categories.index') }}" class="text-decoration-none text-secondary">Danh sách danh mục</a>
-    </div>
-</header>
+@endpush
 
+@section('content')
 <div class="container px-3">
     <div class="form-card">
         <h2 class="fw-bold mb-2">＋ Thêm danh mục mới</h2>
@@ -76,5 +68,4 @@
         </form>
     </div>
 </div>
-</body>
-</html>
+@endsection

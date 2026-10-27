@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\Models\Category;
 use App\Models\User;
 use Tests\TestCase;
 
@@ -53,5 +54,34 @@ class ExampleTest extends TestCase
         $response->assertRedirect(route('register'));
         $response->assertSessionHasErrors('email');
         $this->assertGuest();
+    }
+
+    public function test_category_management_requires_store_owner_access(): void
+    {
+        $this->get(route('categories.index'))
+            ->assertRedirect(route('login'));
+
+        $customer = User::factory()->create(['role' => 'customer']);
+
+        $this->actingAs($customer)
+            ->get(route('categories.index'))
+            ->assertForbidden();
+    }
+
+    public function test_store_owner_can_access_category_management_from_the_shared_interface(): void
+    {
+        $owner = User::factory()->create(['role' => 'admin']);
+        Category::create([
+            'name' => 'Áo',
+            'slug' => 'ao',
+            'description' => 'Danh mục áo.',
+            'is_active' => true,
+        ]);
+
+        $this->actingAs($owner)
+            ->get(route('categories.index'))
+            ->assertOk()
+            ->assertSee('Quản lý danh mục')
+            ->assertSee(route('categories.create'));
     }
 }
