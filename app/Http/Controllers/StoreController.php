@@ -12,11 +12,20 @@ class StoreController extends Controller
     {
         return view('home', [
             'products' => Product::query()
-                ->with('category')
+                ->with(['category', 'sizes'])
                 ->where('is_active', true)
                 ->latest()
                 ->get(),
             'categories' => Category::query()->where('is_active', true)->orderBy('name')->get(),
         ]);
+    }
+
+    public function show(Product $product): View
+    {
+        abort_unless($product->is_active, 404);
+
+        $product->load(['category', 'sizes', 'images']);
+
+        return view('products.show', compact('product'));
     }
 }

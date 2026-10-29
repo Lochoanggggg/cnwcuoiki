@@ -17,8 +17,18 @@
         <div class="collapse navbar-collapse" id="mainNav">
             <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
                 @auth
+                    @can('customer')
+                        <li class="nav-item"><a class="nav-link" href="{{ route('cart.index') }}">Giỏ hàng</a></li>
+                    @endcan
                     @can('manage-categories')
                         <li class="nav-item"><a class="nav-link" href="{{ route('categories.index') }}">Quản lý danh mục</a></li>
+                    @endcan
+                    @can('manage-store')
+                        <li class="nav-item"><a class="nav-link" href="{{ route('products.index') }}">Sản phẩm</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('orders.index') }}">Đơn hàng</a></li>
+                    @endcan
+                    @can('customer')
+                        <li class="nav-item"><a class="nav-link" href="{{ route('customer.orders.index') }}">Đơn hàng của tôi</a></li>
                     @endcan
                     <li class="nav-item"><a class="nav-link" href="{{ route('profile.edit') }}">Xin chào, {{ auth()->user()->name }}</a></li>
                     <li class="nav-item">
@@ -41,5 +51,6 @@
     @yield('content')
 </main>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+@stack('scripts')
 </body>
 </html>

@@ -22,5 +22,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Gate::define('manage-categories', static fn (User $user): bool => $user->isStoreOwner());
+        Gate::define('manage-store', static fn (User $user): bool => $user->isStoreOwner());
+        Gate::define('customer', static fn (User $user): bool => $user->role === 'customer');
     }
 }
