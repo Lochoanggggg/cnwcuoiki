@@ -17,7 +17,7 @@ Route::middleware(['auth', 'can:customer'])->group(function () {
     Route::get('/gio-hang', [CartController::class, 'index'])->name('cart.index');
     Route::post('/gio-hang/{product}', [CartController::class, 'store'])->name('cart.store');
     Route::patch('/gio-hang', [CartController::class, 'update'])->name('cart.update');
-    Route::delete('/gio-hang/{key}', [CartController::class, 'destroy'])->name('cart.destroy');
+    Route::delete('/gio-hang/{cartItem}', [CartController::class, 'destroy'])->name('cart.destroy');
 });
 Route::get('/dang-nhap', [AuthController::class, 'showLogin'])->middleware('guest')->name('login');
 Route::post('/dang-nhap', [AuthController::class, 'login'])->middleware('guest');
